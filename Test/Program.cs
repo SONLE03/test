@@ -37,14 +37,10 @@ builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
 // Enable Swagger in development
-if (app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
 {
     app.UseSwagger();
-    app.UseSwaggerUI(c =>
-    {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "API V1");
-        c.RoutePrefix = string.Empty;  // This makes Swagger available at the root URL
-    });
+    app.UseSwaggerUI();
 }
 
 // Apply migrations and create the database if it doesn't exist
