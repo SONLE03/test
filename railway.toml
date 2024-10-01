@@ -1,0 +1,7 @@
+[build]
+builder = "dockerfile"
+dockerfilePath = "./Test/Dockerfile"
+
+[deploy]
+startCommand = "dotnet Test.dll"
+restartPolicyType = "never"
