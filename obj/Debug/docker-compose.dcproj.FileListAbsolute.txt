@@ -1,0 +1,14 @@
+D:\Test\bin\Debug\Test.deps.json
+D:\Test\bin\Debug\Test.runtimeconfig.json
+D:\Test\bin\Debug\appsettings.Development.json
+D:\Test\bin\Debug\appsettings.json
+D:\Test\bin\Debug\Test.exe
+D:\Test\bin\Debug\Test.dll
+D:\Test\bin\Debug\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\Test\bin\Debug\Swashbuckle.AspNetCore.Swagger.dll
+D:\Test\bin\Debug\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\Test\bin\Debug\Microsoft.OpenApi.dll
+D:\Test\bin\Debug\Test.pdb
+D:\Test\obj\Debug\docker-compose.dcproj.AssemblyReference.cache
+D:\Test\obj\Debug\docker-compose.dcproj.CoreCompileInputs.cache
+D:\Test\obj\Debug\docker-c.35A3FFBA.Up2Date
