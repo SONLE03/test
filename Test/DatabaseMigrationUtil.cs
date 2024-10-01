@@ -7,12 +7,16 @@ namespace Test
 
         public static async Task ManageDataAsync(IServiceProvider svcProvider)
         {
-            //Service: An instance of db context
             var dbContextSvc = svcProvider.GetRequiredService<ApplicationDBContext>();
 
-            //Migration: This is the programmatic equivalent to Update-Database
+            // Ghi lại chuỗi kết nối để gỡ lỗi
+            var connectionString = dbContextSvc.Database.GetDbConnection().ConnectionString;
+            Console.WriteLine($"Đang cố gắng kết nối bằng: {connectionString}");
+
+            // Thực hiện migration: Đây là chương trình tương đương với Update-Database
             await dbContextSvc.Database.MigrateAsync();
         }
+
 
 
     }
