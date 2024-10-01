@@ -16,6 +16,7 @@ namespace Test
         private static string BuildConnectionString(string databaseUrl)
         {
             var databaseUri = new Uri(databaseUrl);
+            Console.WriteLine($"Đang cố gắng kết nối bằng: {databaseUri}");
             var userInfo = databaseUri.UserInfo.Split(':');
             var builder = new NpgsqlConnectionStringBuilder
             {

@@ -16,8 +16,5 @@ namespace Test
             // Thực hiện migration: Đây là chương trình tương đương với Update-Database
             await dbContextSvc.Database.MigrateAsync();
         }
-
-
-
     }
 }
