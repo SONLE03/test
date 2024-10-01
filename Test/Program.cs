@@ -51,25 +51,14 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
-    DatabaseMigrationUtil.DataBaseMigrationInstallation(app);
-
+ 
 }
 
-//// Apply migrations and create the database if it doesn't exist
-//using (var scope = app.Services.CreateScope())
-//{
-//    var services = scope.ServiceProvider;
-//    try
-//    {
-//        var context = services.GetRequiredService<ApplicationDBContext>();
-//        context.Database.Migrate(); // Ensure the database is created and migrations are applied
-//    }
-//    catch (Exception ex)
-//    {
-//        // Log the error (you can use a logging framework for better management)
-//        Console.WriteLine($"An error occurred while migrating the database: {ex.Message}");
-//    }
-//}
+// Apply migrations and create the database if it doesn't exist
+using (var scope = app.Services.CreateScope())
+{
+    await DataHelper.ManageDataAsync(scope.ServiceProvider);
+}
 
 // CORS settings (adjust as necessary for your use case)
 app.UseCors(x => x
