@@ -36,6 +36,7 @@ builder.Services.AddIdentity<User, IdentityRole>(options =>
 .AddEntityFrameworkStores<ApplicationDBContext>()
 .AddRoles<IdentityRole>()
 .AddDefaultTokenProviders();
+builder.Services.AddAuthorization();
 
 // Swagger configuration (for API documentation)
 builder.Services.AddEndpointsApiExplorer();
