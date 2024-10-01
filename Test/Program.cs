@@ -4,12 +4,27 @@ using Test;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Get the PORT from environment variable (Railway uses dynamic ports)
 var port = Environment.GetEnvironmentVariable("PORT") ?? "8081";
 builder.WebHost.UseUrls($"http://*:{port}");
-// Add services to the container.
-builder.Services.AddDbContext<ApplicationDBContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DATABASE_URL")));
-builder.Services.AddControllers();
+
+// Get DATABASE_URL from environment and convert it for use with Npgsql
+var databaseUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
+if (databaseUrl is not null)
+{
+    // Convert DATABASE_URL from a URL format to Npgsql format
+    var connectionString = ConvertPostgresConnectionString(databaseUrl);
+    builder.Services.AddDbContext<ApplicationDBContext>(options =>
+        options.UseNpgsql(connectionString));
+}
+else
+{
+    // Fallback to local config or other default settings if necessary
+    builder.Services.AddDbContext<ApplicationDBContext>(options =>
+        options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+}
+
+// Add Identity services
 builder.Services.AddIdentity<User, IdentityRole>(options =>
 {
     options.Password.RequireDigit = true;
@@ -18,21 +33,31 @@ builder.Services.AddIdentity<User, IdentityRole>(options =>
     options.Password.RequireNonAlphanumeric = true;
     options.Password.RequiredLength = 8;
 })
-.AddEntityFrameworkStores<ApplicationDBContext>().AddRoles<IdentityRole>()
+.AddEntityFrameworkStores<ApplicationDBContext>()
+.AddRoles<IdentityRole>()
 .AddDefaultTokenProviders();
 
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+// Swagger configuration (for API documentation)
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Enable Swagger in development
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+
 }
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var context = services.GetRequiredService<ApplicationDBContext>();
+    context.Database.Migrate();
+}
+
+// CORS settings (adjust as necessary for your use case)
 app.UseCors(x => x
     .AllowAnyOrigin()
     .AllowAnyMethod()
@@ -45,3 +70,13 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+/// <summary>
+/// Converts DATABASE_URL format to a PostgreSQL connection string.
+/// </summary>
+static string ConvertPostgresConnectionString(string databaseUrl)
+{
+    var uri = new Uri(databaseUrl);
+    var userInfo = uri.UserInfo.Split(':');
+    return $"Host={uri.Host};Port={uri.Port};Username={userInfo[0]};Password={userInfo[1]};Database={uri.AbsolutePath.TrimStart('/')};SSL Mode=Require;Trust Server Certificate=true";
+}
