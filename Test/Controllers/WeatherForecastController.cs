@@ -6,6 +6,7 @@ namespace Test.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
+        private readonly ApplicationDBContext _dbContext;
         private static readonly string[] Summaries = new[]
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
@@ -13,8 +14,9 @@ namespace Test.Controllers
 
         private readonly ILogger<WeatherForecastController> _logger;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(ApplicationDBContext dbContext, ILogger<WeatherForecastController> logger)
         {
+            _dbContext = dbContext;
             _logger = logger;
         }
 
@@ -28,6 +30,17 @@ namespace Test.Controllers
                 Summary = Summaries[Random.Shared.Next(Summaries.Length)]
             })
             .ToArray();
+        }
+        [HttpPost()]
+        public async Task<IActionResult> Post()
+        {
+            var a = new A
+            {
+                Name = "ABCXYZ"
+            };
+            await _dbContext.Assets.AddAsync(a);
+            await _dbContext.SaveChangesAsync();
+            return Ok(a);
         }
     }
 }
