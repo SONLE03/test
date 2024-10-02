@@ -38,7 +38,6 @@ var redisConnectionString = Environment.GetEnvironmentVariable("REDIS_URL"); // 
 Console.WriteLine($"Đang cố gắng kết nối bằng: {redisConnectionString}");
 var options = ConfigurationOptions.Parse(redisConnectionString);
 options.AbortOnConnectFail = false;  // Cho phép retry khi kết nối thất bại
-
 try
 {
     // Connect to Redis
@@ -51,7 +50,7 @@ catch (Exception ex)
     Console.WriteLine($"Lỗi kết nối Redis: {ex.Message}");
     throw;
 }
-
+builder.Services.AddHttpClient();
 builder.Services.AddScoped<IRedisCacheService, RedisCacheServiceImp>();
 
 
