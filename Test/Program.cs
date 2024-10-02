@@ -34,8 +34,15 @@ builder.Services.AddAuthorization();
 // Swagger configuration (for API documentation)
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-var redisConnectionString = Environment.GetEnvironmentVariable("REDIS_URL"); // Add abortConnect=false to allow retry
-Console.WriteLine($"Đang cố gắng kết nối bằng: {redisConnectionString}");
+var redisHost = Environment.GetEnvironmentVariable("REDISHOST"); // Lấy host của Redis
+Console.WriteLine(redisHost);
+var redisPort = Environment.GetEnvironmentVariable("REDISPORT") ?? "6379";    // Lấy port của Redis (default 6379)
+Console.WriteLine(redisPort);
+var redisPassword = Environment.GetEnvironmentVariable("REDIS_PASSWORD");
+Console.WriteLine(redisPassword);
+var redisConnectionString = $"{redisHost}:{redisPort},password={redisPassword}";
+Console.WriteLine(redisConnectionString);
+
 var options = ConfigurationOptions.Parse(redisConnectionString);
 options.AbortOnConnectFail = false;  // Cho phép retry khi kết nối thất bại
 try
