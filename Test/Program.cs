@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using StackExchange.Redis;
 using Test;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -30,21 +31,21 @@ builder.Services.AddControllers();  // Configure services for controllers
 
 builder.Services.AddAuthorization();
 
-//// Swagger configuration (for API documentation)
-//builder.Services.AddEndpointsApiExplorer();
-//builder.Services.AddSwaggerGen();
-//var redisConnectionString = Environment.GetEnvironmentVariable("REDIS_URL"); // Lấy từ biến môi trường Railway
+// Swagger configuration (for API documentation)
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+var redisConnectionString = Environment.GetEnvironmentVariable("REDIS_URL"); // Lấy từ biến môi trường Railway
 
-//if (string.IsNullOrEmpty(redisConnectionString))
-//{
-//    Console.WriteLine($"Đang cố gắng kết nối bằng: {redisConnectionString}");
-//}
+if (string.IsNullOrEmpty(redisConnectionString))
+{
+    Console.WriteLine($"Đang cố gắng kết nối bằng: {redisConnectionString}");
+}
 
 
-//builder.Services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(redisConnectionString));
+builder.Services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(redisConnectionString));
 
-//// Đăng ký RedisCacheService
-//builder.Services.AddSingleton<IRedisCacheService, RedisCacheServiceImp>();
+// Đăng ký RedisCacheService
+builder.Services.AddScoped<IRedisCacheService, RedisCacheServiceImp>();
 
 
 var app = builder.Build();
