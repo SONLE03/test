@@ -34,13 +34,16 @@ builder.Services.AddAuthorization();
 // Swagger configuration (for API documentation)
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-var redisConnectionString = Environment.GetEnvironmentVariable("REDIS_URL") + ",abortConnect=false"; // Add abortConnect=false to allow retry
+var redisConnectionString = Environment.GetEnvironmentVariable("REDIS_URL"); // Add abortConnect=false to allow retry
 Console.WriteLine($"Đang cố gắng kết nối bằng: {redisConnectionString}");
+var options = ConfigurationOptions.Parse(redisConnectionString);
+options.AbortOnConnectFail = false;  // Cho phép retry khi kết nối thất bại
 
 try
 {
     // Connect to Redis
-    var redisConnection = ConnectionMultiplexer.Connect(redisConnectionString);
+    var redisConnection = ConnectionMultiplexer.Connect(options);
+
     builder.Services.AddSingleton<IConnectionMultiplexer>(redisConnection);
 }
 catch (Exception ex)
