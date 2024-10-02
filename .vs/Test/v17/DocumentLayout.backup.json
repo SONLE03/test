@@ -1,7 +1,28 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\Test\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{8B7FE9C0-B152-4CB2-99FE-3D84D88B497B}|Test\\Test.csproj|d:\\test\\test\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8B7FE9C0-B152-4CB2-99FE-3D84D88B497B}|Test\\Test.csproj|solutionrelative:test\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B7FE9C0-B152-4CB2-99FE-3D84D88B497B}|Test\\Test.csproj|d:\\test\\test\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{8B7FE9C0-B152-4CB2-99FE-3D84D88B497B}|Test\\Test.csproj|solutionrelative:test\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B7FE9C0-B152-4CB2-99FE-3D84D88B497B}|Test\\Test.csproj|d:\\test\\test\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{8B7FE9C0-B152-4CB2-99FE-3D84D88B497B}|Test\\Test.csproj|solutionrelative:test\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B7FE9C0-B152-4CB2-99FE-3D84D88B497B}|Test\\Test.csproj|d:\\test\\test\\databasemigrationutil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8B7FE9C0-B152-4CB2-99FE-3D84D88B497B}|Test\\Test.csproj|solutionrelative:test\\databasemigrationutil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B7FE9C0-B152-4CB2-99FE-3D84D88B497B}|Test\\Test.csproj|d:\\test\\test\\connectionhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8B7FE9C0-B152-4CB2-99FE-3D84D88B497B}|Test\\Test.csproj|solutionrelative:test\\connectionhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,11 +30,72 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ConnectionHelper.cs",
+              "DocumentMoniker": "D:\\Test\\Test\\ConnectionHelper.cs",
+              "RelativeDocumentMoniker": "Test\\ConnectionHelper.cs",
+              "ToolTip": "D:\\Test\\Test\\ConnectionHelper.cs",
+              "RelativeToolTip": "Test\\ConnectionHelper.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAABOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-01T19:06:25.316Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DatabaseMigrationUtil.cs",
+              "DocumentMoniker": "D:\\Test\\Test\\DatabaseMigrationUtil.cs",
+              "RelativeDocumentMoniker": "Test\\DatabaseMigrationUtil.cs",
+              "ToolTip": "D:\\Test\\Test\\DatabaseMigrationUtil.cs",
+              "RelativeToolTip": "Test\\DatabaseMigrationUtil.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-01T18:41:38.228Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Dockerfile",
+              "DocumentMoniker": "D:\\Test\\Test\\Dockerfile",
+              "RelativeDocumentMoniker": "Test\\Dockerfile",
+              "ToolTip": "D:\\Test\\Test\\Dockerfile",
+              "RelativeToolTip": "Test\\Dockerfile",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-10-01T18:12:22.447Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Test\\Test\\Program.cs",
+              "RelativeDocumentMoniker": "Test\\Program.cs",
+              "ToolTip": "D:\\Test\\Test\\Program.cs",
+              "RelativeToolTip": "Test\\Program.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAAACoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-01T17:46:18.265Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\Test\\Test\\appsettings.json",
+              "RelativeDocumentMoniker": "Test\\appsettings.json",
+              "ToolTip": "D:\\Test\\Test\\appsettings.json",
+              "RelativeToolTip": "Test\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-10-01T17:40:07.435Z"
             }
           ]
         }
