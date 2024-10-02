@@ -36,10 +36,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 var redisConnectionString = Environment.GetEnvironmentVariable("REDIS_URL"); // Lấy từ biến môi trường Railway
 
-if (string.IsNullOrEmpty(redisConnectionString))
-{
-    Console.WriteLine($"Đang cố gắng kết nối bằng: {redisConnectionString}");
-}
+Console.WriteLine($"Đang cố gắng kết nối bằng: {redisConnectionString}");
 
 
 builder.Services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(redisConnectionString));
