@@ -49,6 +49,7 @@ catch (Exception ex)
     throw;
 }
 
+builder.Services.AddScoped<IRedisCacheService, RedisCacheServiceImp>();
 
 
 var app = builder.Build();
